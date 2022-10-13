@@ -17,9 +17,10 @@ router.post('/save-to-do', function(req, res, next) {
   res.redirect('/');
 });
 
-router.get('/delete-to-do/:index', function(req, res, next) {
-  console.log(req.params.index);
-  todos.splice(req.params.index, 1); 
+router.get('/delete-to-do/:id', function(req, res, next) {
+  // console.log(req.params.id);
+  const toDelete = todos.findIndex(todo => todo._id === req.params.id)
+  todos.splice(toDelete, 1); 
   res.redirect('/');
 });
 
